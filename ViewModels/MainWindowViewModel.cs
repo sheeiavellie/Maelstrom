@@ -4,7 +4,7 @@ namespace Maelstrom.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        private string _Title = "title_plchldr";
+        private string _Title = "Maelstorm project";
 
         public string Title
         {

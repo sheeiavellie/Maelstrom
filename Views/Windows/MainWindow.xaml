@@ -8,12 +8,78 @@
         mc:Ignorable="d"
         
         Title="{Binding Title}" 
-        Height="500" Width="500" 
+        Height="650" Width="600"
+        ResizeMode="NoResize"
         >
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
 
-    </Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" ShowGridLines="false" Height="100px" Margin="50, 0, 50, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" TextAlignment="Center" Text="{Binding Title}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="todo Gold: 500" TextAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="todo Mana: 500" TextAlignment="Center"/>
+
+            <Button Grid.Row="1" Grid.Column="3" Grid.RowSpan="2">
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Next turn" TextAlignment="Center"/>
+                
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                
+            </Button>
+
+        </Grid>
+
+
+
+
+        <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
+            <Grid ShowGridLines="true">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Border>
+    </DockPanel>
+    
+    
 </Window>
