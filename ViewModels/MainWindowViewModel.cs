@@ -11,5 +11,10 @@ namespace Maelstrom.ViewModels
             get => _Title;
             set => Set(ref _Title, value);
         }
+
+        public MainWindowViewModel()
+        {
+
+        }
     }
 }
