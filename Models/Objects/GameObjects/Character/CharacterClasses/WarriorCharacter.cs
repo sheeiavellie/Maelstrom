@@ -1,6 +1,8 @@
-﻿namespace Maelstrom.Models.Objects.GameObjects.CharacterClasses
+﻿using Maelstrom.Models.Objects.Envirnoment;
+
+namespace Maelstrom.Models.Objects.GameObjects.CharacterClasses
 {
-    internal class SourcererCharacter : ICharacter
+    internal class WarriorCharacter
     {
         private readonly ICharacter character;
         public int HitPoints
@@ -14,7 +16,7 @@
             set => character.ManaPoints = value;
         }
 
-        public SourcererCharacter(ICharacter character)
+        public WarriorCharacter(ICharacter character)
         {
             this.character = character;
         }
@@ -24,9 +26,9 @@
             character.Attack(obj);
         }
 
-        public void Move(int row, int column)
+        public void Move(World world, int row, int column)
         {
-            character.Move(row, column);
+            character.Move(world, row, column);
         }
 
         public void Use(GameObject obj)

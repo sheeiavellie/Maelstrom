@@ -1,4 +1,5 @@
 ﻿using System;
+using Maelstrom.Models.Objects.Envirnoment;
 
 namespace Maelstrom.Models.Objects.GameObjects
 {
@@ -12,9 +13,11 @@ namespace Maelstrom.Models.Objects.GameObjects
             throw new NotImplementedException();
         }
 
-        public void Move(int row, int column)
+        public void Move(World world, int row, int column)
         {
-            throw new NotImplementedException();
+            if (Row != -1 && Column != -1)
+                world.RemoveObject(this);
+            world.AddObject(this, row, column);
         }
 
         public void Use(GameObject obj)

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maelstrom.Models.Objects.GameObjects
+﻿namespace Maelstrom.Models.Objects.GameObjects
 {
     internal abstract class GameObject
     {
-        string Name { get; set; }
+        public string Name { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }        
     }
 }

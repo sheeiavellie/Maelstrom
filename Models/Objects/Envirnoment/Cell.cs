@@ -26,5 +26,10 @@ namespace Maelstrom.Models.Objects.Envirnoment
             get => _CurrentlyOccupied;
             set => _CurrentlyOccupied = value;
         }
+
+        public Cell()
+        {
+            Weight = 1;
+        }
     }
 }
