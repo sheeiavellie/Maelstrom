@@ -1,4 +1,4 @@
-﻿namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Building
+﻿namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings
 {
     internal interface IBuildingSource
     {

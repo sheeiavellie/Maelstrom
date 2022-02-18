@@ -4,36 +4,36 @@ namespace Maelstrom.Models.Objects.GameObjects.CharacterClasses
 {
     internal class SourcererCharacter : ICharacter
     {
-        private readonly ICharacter character;
+        private readonly ICharacter characterSourcerer;
         public int HitPoints
         {
-            get => character.HitPoints;
-            set => character.HitPoints = value;
+            get => characterSourcerer.HitPoints;
+            set => characterSourcerer.HitPoints = value;
         }
         public int ManaPoints
         {
-            get => character.ManaPoints;
-            set => character.ManaPoints = value;
+            get => characterSourcerer.ManaPoints;
+            set => characterSourcerer.ManaPoints = value;
         }
 
         public SourcererCharacter(ICharacter character)
         {
-            this.character = character;
+            characterSourcerer = character;
         }
 
         public void Attack(GameObject obj)
         {
-            character.Attack(obj);
+            characterSourcerer.Attack(obj);
         }
 
         public void Move(World world, int row, int column)
         {
-            character.Move(world, row, column);
+            characterSourcerer.Move(world, row, column);
         }
 
         public void Use(GameObject obj)
         {
-            character.Use(obj);
+            characterSourcerer.Use(obj);
         }
     }
 }
