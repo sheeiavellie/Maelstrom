@@ -52,7 +52,7 @@
 
 
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
-            <Grid ShowGridLines="true">
+            <Grid x:Name="ggg" ShowGridLines="true">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
