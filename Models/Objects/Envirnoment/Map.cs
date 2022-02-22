@@ -1,4 +1,6 @@
-﻿using Maelstrom.Services.MapLoaderManager;
+﻿using Maelstrom.Models.Objects.GameObjects;
+using Maelstrom.Services.MapLoaderManager;
+using System;
 
 namespace Maelstrom.Models.Objects.Envirnoment
 {
@@ -9,18 +11,16 @@ namespace Maelstrom.Models.Objects.Envirnoment
 
         #endregion
 
+        #region Size
+        public int Size { get; set; }
+        #endregion
+
         #region Weights
         public int[,] Weights { get; set; }
         #endregion
 
         #region Objects
-        public objectInJson[] Objects { get; set; }
-        public struct objectInJson
-        {
-            public string type;
-            public int xPosition;
-            public int yPosition;
-        }
+        public GameObject[,] Objects { get; set; }
         #endregion
 
         #region Background
@@ -35,13 +35,13 @@ namespace Maelstrom.Models.Objects.Envirnoment
 
             Name = mapLoaderManager.ReadMapFromFile()["name"];
 
-            int size = mapLoaderManager.ReadMapFromFile()["size"];
+            Size = mapLoaderManager.ReadMapFromFile()["size"];
 
-            Weights = new int[size, size];
+            Weights = new int[Size, Size];
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < Size; i++)
             {
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < Size; j++)
                 {
                     Weights[i, j] = mapLoaderManager.ReadMapFromFile()["weights"][i][j];
                 }
@@ -49,16 +49,15 @@ namespace Maelstrom.Models.Objects.Envirnoment
 
             int objects_count = mapLoaderManager.ReadMapFromFile()["objects_count"];
 
-            Objects = new objectInJson[objects_count];
+            Objects = new GameObject[Size, Size];
 
             for (int i = 0; i < objects_count; i++)
             {
-                objectInJson obj;
-                obj.type = mapLoaderManager.ReadMapFromFile()["objects"][i]["type"];
-                obj.xPosition = mapLoaderManager.ReadMapFromFile()["objects"][i]["xPosition"];
-                obj.yPosition = mapLoaderManager.ReadMapFromFile()["objects"][i]["yPosition"];
+                object obj = Activator.CreateInstance(Type.GetType(mapLoaderManager.ReadMapFromFile()["objects"][i]["type"]),
+                    mapLoaderManager.ReadMapFromFile()["objects"][i]["row"],
+                    mapLoaderManager.ReadMapFromFile()["objects"][i]["column"]);
 
-                Objects[i] = obj;
+                    Objects[mapLoaderManager.ReadMapFromFile()["objects"][i]["row"], mapLoaderManager.ReadMapFromFile()["objects"][i]["column"]] = (GameObject)obj;
             }
 
             BackgroundImage = mapLoaderManager.ReadMapFromFile()["background"];

@@ -11,7 +11,8 @@ namespace Maelstrom.Models.Objects.Envirnoment
             set
             {
                 _PlacedObject = value;
-                _CurrentlyOccupied = true;
+                if(value != null)
+                    CurrentlyOccupied = true;
             }
         }
         private int _Weight;
@@ -29,7 +30,7 @@ namespace Maelstrom.Models.Objects.Envirnoment
 
         public Cell()
         {
-            Weight = 1;
+
         }
     }
 }

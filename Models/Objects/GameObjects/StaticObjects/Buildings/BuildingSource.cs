@@ -7,5 +7,11 @@
             get => ResourceAmount;
             set => ResourceAmount = value;
         }
+
+        public BuildingSource(int Row, int Column)
+        {
+            this.Row = Row;
+            this.Column = Column;
+        }
     }
 }

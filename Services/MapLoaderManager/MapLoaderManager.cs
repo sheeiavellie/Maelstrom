@@ -7,11 +7,15 @@ namespace Maelstrom.Services.MapLoaderManager
     {
         public string JsonMapFileIn { get; set; }
 
-        public dynamic ReadMapFromFile()
+        public dynamic ReadMapFromFile()// => JsonConvert.DeserializeObject(File.ReadAllText(JsonMapFileIn)) ?? null;
         {
-            dynamic jsonMapFile = JsonConvert.DeserializeObject(File.ReadAllText(JsonMapFileIn));
+            if (JsonMapFileIn != null)
+            {
+                dynamic jsonMapFile = JsonConvert.DeserializeObject(File.ReadAllText(JsonMapFileIn));
 
-            return jsonMapFile;
+                return jsonMapFile;
+            }
+            return null;
         }
     }
 }

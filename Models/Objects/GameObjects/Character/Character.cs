@@ -20,11 +20,6 @@ namespace Maelstrom.Models.Objects.GameObjects
 
         public void Move(World world, int row, int column)
         {
-            //if (Row != -1 && Column != -1)
-            //  world.RemoveObject(this);
-            //world.AddObject(this, row, column);
-            Row = row;
-            Column = column;
 
         }
 
