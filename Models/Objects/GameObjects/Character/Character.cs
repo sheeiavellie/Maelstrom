@@ -1,7 +1,7 @@
 ﻿using System;
 using Maelstrom.Models.Objects.Envirnoment;
 
-namespace Maelstrom.Models.Objects.GameObjects
+namespace Maelstrom.Models.Objects.GameObjects.Character
 {
     internal class Character : GameObject, ICharacter
     {
@@ -13,19 +13,41 @@ namespace Maelstrom.Models.Objects.GameObjects
             this.Row = Row;
             this.Column = Column;
         }
-        public void Attack(GameObject obj)
+        public void MoveLeft(World world)
         {
-            throw new NotImplementedException();
+            if(this.Column != 0)
+            {
+                world.WorldGrid[this.Row, this.Column].PlacedObject = null;
+                this.Column -= 1;
+                world.WorldGrid[this.Row, this.Column].PlacedObject = this;
+            }
         }
-
-        public void Move(World world, int row, int column)
+        public void MoveUp(World world)
         {
-
+            if (this.Row != 0)
+            {
+                world.WorldGrid[this.Row, this.Column].PlacedObject = null;
+                this.Row += 1;
+                world.WorldGrid[this.Row, this.Column].PlacedObject = this;
+            }
         }
-
-        public void Use(GameObject obj)
+        public void MoveRight(World world)
         {
-            throw new NotImplementedException();
+            if (this.Column < world.Size - 1)
+            {
+                world.WorldGrid[this.Row, this.Column].PlacedObject = null;
+                this.Column += 1;
+                world.WorldGrid[this.Row, this.Column].PlacedObject = this;
+            }
+        }
+        public void MoveDown(World world)
+        {
+            if (this.Row < world.Size - 1)
+            {
+                world.WorldGrid[this.Row, this.Column].PlacedObject = null;
+                this.Row -= 1;
+                world.WorldGrid[this.Row, this.Column].PlacedObject = this;
+            }
         }
     }
 }

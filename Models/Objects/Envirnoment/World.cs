@@ -26,6 +26,5 @@ namespace Maelstrom.Models.Objects.Envirnoment
                 }
             }
         }
-
     }
 }

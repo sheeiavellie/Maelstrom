@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Models\Objects\GameObjects\Character\CharacterClasses\" />
+    <Folder Include="Models\Objects\GameObjects\Character\CharacterProperties\" />
+    <Folder Include="Models\Objects\GameObjects\StaticObjects\Building\" />
   </ItemGroup>
 
   <ItemGroup>

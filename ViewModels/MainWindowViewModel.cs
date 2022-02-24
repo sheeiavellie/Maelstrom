@@ -39,12 +39,7 @@ namespace Maelstrom.ViewModels
         {
             //TestCommand = new RelayCommand(OnTestCommandExecuted, CanTestCommandExecute);
 
-            var player = new Character(1, 1);
-            player.Name = "bob";
-
             GameObjects = new ObservableCollection<GameObject>();
-
-            GameObjects.Add(player);
         }
     }
 }
