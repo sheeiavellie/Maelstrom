@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Maelstrom.ViewModels"
+        xmlns:c="clr-namespace:Maelstrom.Infrastructure.Converters"
         xmlns:local="clr-namespace:Maelstrom"
         mc:Ignorable="d"
         
@@ -77,6 +78,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Image Grid.RowSpan="10" Grid.ColumnSpan="10">
+                    <Image.Source>
+                        <Binding Path="B64">
+                            <Binding.Converter>
+                                <c:Base64ToImage/>
+                            </Binding.Converter>
+                        </Binding>
+                    </Image.Source>
+                </Image>
             </Grid>
         </Border>
     </DockPanel>
