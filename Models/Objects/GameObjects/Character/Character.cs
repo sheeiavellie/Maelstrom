@@ -7,7 +7,11 @@ namespace Maelstrom.Models.Objects.GameObjects.Character
     {
         public int ManaPoints { get; set; }
         public int HitPoints { get; set; }
+        
+        public Character()
+        {
 
+        }
         public Character(int Row, int Column)
         {
             this.Row = Row;

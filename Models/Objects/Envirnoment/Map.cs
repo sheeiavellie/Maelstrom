@@ -1,6 +1,7 @@
 ﻿using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.Services.MapLoaderManager;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Maelstrom.Models.Objects.Envirnoment
 {
@@ -21,6 +22,7 @@ namespace Maelstrom.Models.Objects.Envirnoment
 
         #region Objects
         public GameObject[,] Objects { get; set; }
+        public ObservableCollection<GameObject> ObjectsViewModel { get; set; }
         #endregion
 
         #region Background
@@ -31,6 +33,7 @@ namespace Maelstrom.Models.Objects.Envirnoment
         private IMapLoaderManager mapLoaderManager;
         public Map(string mapName)
         {
+            mapLoaderManager = new MapLoaderManager();
             mapLoaderManager.JsonMapFileIn = mapName;
 
             Name = mapLoaderManager.ReadMapFromFile()["name"];
@@ -50,16 +53,20 @@ namespace Maelstrom.Models.Objects.Envirnoment
             int objects_count = mapLoaderManager.ReadMapFromFile()["objects_count"];
 
             Objects = new GameObject[Size, Size];
+            ObjectsViewModel = new ObservableCollection<GameObject>();
 
             for (int i = 0; i < objects_count; i++)
             {
-                object obj = Activator.CreateInstance(Type.GetType(mapLoaderManager.ReadMapFromFile()["objects"][i]["type"]),
-                    mapLoaderManager.ReadMapFromFile()["objects"][i]["row"],
-                    mapLoaderManager.ReadMapFromFile()["objects"][i]["column"]);
+                string x = mapLoaderManager.ReadMapFromFile()["objects"][i]["type"];
+                GameObject obj = (GameObject)Activator.CreateInstance(Type.GetType(x));
 
-                    Objects[mapLoaderManager.ReadMapFromFile()["objects"][i]["row"], mapLoaderManager.ReadMapFromFile()["objects"][i]["column"]] = (GameObject)obj;
+                obj.Row = mapLoaderManager.ReadMapFromFile()["objects"][i]["row"];
+                obj.Column = mapLoaderManager.ReadMapFromFile()["objects"][i]["column"];
+
+                Objects[mapLoaderManager.ReadMapFromFile()["objects"][i]["row"], mapLoaderManager.ReadMapFromFile()["objects"][i]["column"]] = obj;
+                ObjectsViewModel.Add(obj);
+
             }
-
             BackgroundImage = mapLoaderManager.ReadMapFromFile()["background"];
         }
     }
