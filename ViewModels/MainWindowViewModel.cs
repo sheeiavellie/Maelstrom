@@ -42,7 +42,7 @@ namespace Maelstrom.ViewModels
 
 
         #region Envirnoment
-        private Map map = new Map("map_test.json");
+        private Map map = new Map("../../../Data/Resources/Maps/map_test.json");
         private World world; 
         #endregion
 
@@ -51,7 +51,7 @@ namespace Maelstrom.ViewModels
             GameObjects = map.ObjectsViewModel;
             world = new World(map);
             _B64 = map.BackgroundImage;
-            GameObjects[0].Name = "bob";
+            GameObjects[0].Name = "test";
 
             
         }

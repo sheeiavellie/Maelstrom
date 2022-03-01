@@ -70,7 +70,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.RowSpan="10" Grid.ColumnSpan="10">
+                <Image Grid.RowSpan="10" Grid.ColumnSpan="10" Stretch="UniformToFill">
                     <Image.Source>
                         <Binding Path="B64">
                             <Binding.Converter>
@@ -80,7 +80,8 @@
                     </Image.Source>
                 </Image>
 
-                <TextBlock DataContext="{Binding GameObjects[0]}" Text="{Binding Name}" Grid.Row="{Binding Row}" Grid.Column="{Binding Column}"/>
+                <TextBlock DataContext="{Binding GameObjects[0]}" Text="{Binding Name}" Grid.Row="{Binding Row}" 
+                           Grid.Column="{Binding Column}"/>
 
             </Grid>
         </Border>
