@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Commands\UserControlsCommands\Base\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterClasses\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterProperties\" />
     <Folder Include="Models\Objects\GameObjects\StaticObjects\Building\" />

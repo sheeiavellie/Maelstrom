@@ -38,22 +38,56 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
+        #region Player Position
 
+        #region Player Row
+        private int _PRow;
+        public int PRow
+        {
+            get => _PRow;
+            set => Set(ref _PRow, value);
+        }
+        #endregion
 
+        #region Player Column
+        private int _PColumn;
+        public int PColumn
+        {
+            get => _PColumn;
+            set => Set(ref _PColumn, value);
+        }
+        #endregion 
+
+        #endregion
 
         #region Envirnoment
         private Map map = new Map("../../../Data/Resources/Maps/map_test.json");
         private World world; 
         #endregion
 
+        public ICommand PlayerMoveRightCommand { get; }
+        private bool CanPlayerMoveRightCommandExecute(object p)
+        {
+            if (PColumn < 8)
+                return true;
+            return false;
+        }
+        private void OnPlayerMoveRightCommandExecuted(object p)
+        {
+            PColumn += 1;
+        }
+
         public MainWindowViewModel()
         {
+            PlayerMoveRightCommand = new RelayCommand(OnPlayerMoveRightCommandExecuted, CanPlayerMoveRightCommandExecute);
             GameObjects = map.ObjectsViewModel;
             world = new World(map);
             _B64 = map.BackgroundImage;
             GameObjects[0].Name = "test";
 
-            
+            _PRow = GameObjects[0].Row;
+            _PColumn = GameObjects[0].Column;
+
         }
     }
 }

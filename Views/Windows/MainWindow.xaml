@@ -12,6 +12,9 @@
         Height="650" Width="600"
         ResizeMode="NoResize"
         >
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Command="{Binding PlayerMoveRightCommand}"/>
+    </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -80,8 +83,8 @@
                     </Image.Source>
                 </Image>
 
-                <TextBlock DataContext="{Binding GameObjects[0]}" Text="{Binding Name}" Grid.Row="{Binding Row}" 
-                           Grid.Column="{Binding Column}"/>
+                <TextBlock Text="{Binding GameObjects[0].Name}" Grid.Row="{Binding PRow}" 
+                           Grid.Column="{Binding PColumn}"/>
 
             </Grid>
         </Border>
