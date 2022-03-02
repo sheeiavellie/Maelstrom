@@ -62,13 +62,16 @@ namespace Maelstrom.ViewModels
 
         #region Envirnoment
         private Map map = new Map("../../../Data/Resources/Maps/map_test.json");
-        private World world; 
+        private World world;
         #endregion
 
+        #region Player Controls
+
+        #region Right
         public ICommand PlayerMoveRightCommand { get; }
         private bool CanPlayerMoveRightCommandExecute(object p)
         {
-            if (PColumn < 8)
+            if (PColumn < map.Size - 1)
                 return true;
             return false;
         }
@@ -76,10 +79,59 @@ namespace Maelstrom.ViewModels
         {
             PColumn += 1;
         }
+        #endregion
+
+        #region Left
+        public ICommand PlayerMoveLeftCommand { get; }
+        private bool CanPlayerMoveLeftCommandExecute(object p)
+        {
+            if (PColumn > 0)
+                return true;
+            return false;
+        }
+        private void OnPlayerMoveLeftCommandExecuted(object p)
+        {
+            PColumn -= 1;
+        }
+        #endregion
+
+        #region Up
+        public ICommand PlayerMoveUpCommand { get; }
+        private bool CanPlayerMoveUpCommandExecute(object p)
+        {
+            if (PRow > 0)
+                return true;
+            return false;
+        }
+        private void OnPlayerMoveUpCommandExecuted(object p)
+        {
+            PRow -= 1;
+        }
+        #endregion
+
+        #region Down
+        public ICommand PlayerMoveDownCommand { get; }
+        private bool CanPlayerMoveDownCommandExecute(object p)
+        {
+            if (PRow < map.Size - 1)
+                return true;
+            return false;
+        }
+        private void OnPlayerMoveDownCommandExecuted(object p)
+        {
+            PRow += 1;
+        }
+        #endregion 
+
+        #endregion
 
         public MainWindowViewModel()
         {
             PlayerMoveRightCommand = new RelayCommand(OnPlayerMoveRightCommandExecuted, CanPlayerMoveRightCommandExecute);
+            PlayerMoveLeftCommand = new RelayCommand(OnPlayerMoveLeftCommandExecuted, CanPlayerMoveLeftCommandExecute);
+            PlayerMoveUpCommand = new RelayCommand(OnPlayerMoveUpCommandExecuted, CanPlayerMoveUpCommandExecute);
+            PlayerMoveDownCommand = new RelayCommand(OnPlayerMoveDownCommandExecuted, CanPlayerMoveDownCommandExecute);
+
             GameObjects = map.ObjectsViewModel;
             world = new World(map);
             _B64 = map.BackgroundImage;

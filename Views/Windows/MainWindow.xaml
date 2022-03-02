@@ -13,7 +13,10 @@
         ResizeMode="NoResize"
         >
     <Window.InputBindings>
-        <KeyBinding Key="Q" Command="{Binding PlayerMoveRightCommand}"/>
+        <KeyBinding Key="Right" Command="{Binding PlayerMoveRightCommand}"/>
+        <KeyBinding Key="Left" Command="{Binding PlayerMoveLeftCommand}"/>
+        <KeyBinding Key="Up" Command="{Binding PlayerMoveUpCommand}"/>
+        <KeyBinding Key="Down" Command="{Binding PlayerMoveDownCommand}"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -48,7 +51,7 @@
             </Button>
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
-            <Grid x:Name="ggg" ShowGridLines="false">
+            <Grid x:Name="ggg" ShowGridLines="true">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
