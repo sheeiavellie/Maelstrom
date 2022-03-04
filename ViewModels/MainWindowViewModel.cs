@@ -11,6 +11,15 @@ namespace Maelstrom.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        /*private ObservableCollection<ObservableCollection<int>> _Weights;
+        public ObservableCollection<ObservableCollection<int>> Weights
+        {
+            get => _Weights;
+            set => Set(ref _Weights, value);
+        }*/
+
+        private Character player;
+
         #region Title
         public string _Title = "Maelstorm project";
         public string Title
@@ -61,7 +70,7 @@ namespace Maelstrom.ViewModels
         #endregion
 
         #region Envirnoment
-        private Map map = new Map("../../../Data/Resources/Maps/map_test.json");
+        private Map map;
         private World world;
         #endregion
 
@@ -71,12 +80,14 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveRightCommand { get; }
         private bool CanPlayerMoveRightCommandExecute(object p)
         {
-            if (PColumn < map.Size - 1)
+            if (PColumn < map.Size - 1 && world.WorldGrid[PRow, PColumn + 1].Weight != 0)
                 return true;
             return false;
         }
         private void OnPlayerMoveRightCommandExecuted(object p)
         {
+            world.WorldGrid[PRow, PColumn + 1].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
+            world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PColumn += 1;
         }
         #endregion
@@ -85,12 +96,14 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveLeftCommand { get; }
         private bool CanPlayerMoveLeftCommandExecute(object p)
         {
-            if (PColumn > 0)
+            if (PColumn > 0 && world.WorldGrid[PRow, PColumn - 1].Weight != 0)
                 return true;
             return false;
         }
         private void OnPlayerMoveLeftCommandExecuted(object p)
         {
+            world.WorldGrid[PRow, PColumn - 1].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
+            world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PColumn -= 1;
         }
         #endregion
@@ -99,12 +112,14 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveUpCommand { get; }
         private bool CanPlayerMoveUpCommandExecute(object p)
         {
-            if (PRow > 0)
+            if (PRow > 0 && world.WorldGrid[PRow - 1, PColumn].Weight != 0)
                 return true;
             return false;
         }
         private void OnPlayerMoveUpCommandExecuted(object p)
         {
+            world.WorldGrid[PRow - 1, PColumn].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
+            world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PRow -= 1;
         }
         #endregion
@@ -113,12 +128,14 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveDownCommand { get; }
         private bool CanPlayerMoveDownCommandExecute(object p)
         {
-            if (PRow < map.Size - 1)
+            if (PRow < map.Size - 1 && world.WorldGrid[PRow + 1, PColumn].Weight != 0)
                 return true;
             return false;
         }
         private void OnPlayerMoveDownCommandExecuted(object p)
         {
+            world.WorldGrid[PRow + 1, PColumn].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
+            world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PRow += 1;
         }
         #endregion 
@@ -132,14 +149,16 @@ namespace Maelstrom.ViewModels
             PlayerMoveUpCommand = new RelayCommand(OnPlayerMoveUpCommandExecuted, CanPlayerMoveUpCommandExecute);
             PlayerMoveDownCommand = new RelayCommand(OnPlayerMoveDownCommandExecuted, CanPlayerMoveDownCommandExecute);
 
-            GameObjects = map.ObjectsViewModel;
+            map = new Map("../../../Data/Resources/Maps/map_test.json");
             world = new World(map);
-            _B64 = map.BackgroundImage;
+            GameObjects = map.ObjectsViewModel;
+
             GameObjects[0].Name = "test";
 
-            _PRow = GameObjects[0].Row;
-            _PColumn = GameObjects[0].Column;
+            PRow = GameObjects[0].Row;
+            PColumn = GameObjects[0].Column;
 
+            _B64 = map.BackgroundImage;
         }
     }
 }

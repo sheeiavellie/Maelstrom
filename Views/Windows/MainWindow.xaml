@@ -88,7 +88,6 @@
 
                 <TextBlock Text="{Binding GameObjects[0].Name}" Grid.Row="{Binding PRow}" 
                            Grid.Column="{Binding PColumn}"/>
-
             </Grid>
         </Border>
     </DockPanel>
