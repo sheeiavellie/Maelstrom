@@ -11,13 +11,6 @@ namespace Maelstrom.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        /*private ObservableCollection<ObservableCollection<int>> _Weights;
-        public ObservableCollection<ObservableCollection<int>> Weights
-        {
-            get => _Weights;
-            set => Set(ref _Weights, value);
-        }*/
-
         #region Title
         public string _Title = "Maelstorm project";
         public string Title
