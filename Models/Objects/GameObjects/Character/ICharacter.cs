@@ -9,9 +9,12 @@ namespace Maelstrom.Models.Objects.GameObjects.Character
         public int Column { get; set; }
         int HitPoints { get; set; }
         int ManaPoints { get; set; }
-        void MoveLeft(World world);
+
+        void UpdatePosition(World world, int Row, int Column);
+
+        /*void MoveLeft(World world);
         void MoveUp(World world);
         void MoveRight(World world);
-        void MoveDown(World world);
+        void MoveDown(World world);*/
     }
 }
