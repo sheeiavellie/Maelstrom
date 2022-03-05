@@ -1,11 +1,9 @@
 ﻿using Maelstrom.Infrastructure.Commands;
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
-using Maelstrom.Models.Objects.GameObjects.Character;
 using Maelstrom.ViewModels.Base;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Maelstrom.ViewModels
 {

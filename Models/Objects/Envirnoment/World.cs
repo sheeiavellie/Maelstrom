@@ -17,9 +17,8 @@ namespace Maelstrom.Models.Objects.Envirnoment
             {
                 for(int y = 0; y < Size; y++)
                 {
-                    Cell cell = new Cell();
+                    Cell cell = new Cell(map.Weights[x, y]);
 
-                    cell.Weight = map.Weights[x, y];
                     cell.PlacedObject = map.Objects[x, y];
 
                     WorldGrid[x, y] = cell;

@@ -10,12 +10,23 @@ namespace Maelstrom.Models.Objects.Envirnoment
             get => _PlacedObject;
             set
             {
+                _Weight = _BaseWeight;
                 _PlacedObject = value;
                 _CurrentlyOccupied = false;
                 if(value != null)
+                {
                     _CurrentlyOccupied = true;
+                    _Weight = 0;
+                }
             }
         }
+
+        private readonly int _BaseWeight;
+        public int BaseWeight
+        {
+            get => _BaseWeight;
+        }
+
         private int _Weight;
         public int Weight
         {
@@ -26,6 +37,11 @@ namespace Maelstrom.Models.Objects.Envirnoment
         public bool CurrentlyOccupied
         {
             get => _CurrentlyOccupied;
+        }
+        public Cell(int Weight)
+        {
+            _BaseWeight = Weight;
+            _Weight = Weight;
         }
     }
 }
