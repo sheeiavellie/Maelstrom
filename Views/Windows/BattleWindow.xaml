@@ -4,12 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maelstrom"
+        xmlns:vm="clr-namespace:Maelstrom.ViewModels"
         mc:Ignorable="d"
-        Title="BattleWindow" 
-        Height="650" 
-        Width="600"
-        ResizeMode="NoResize">
-    <Grid>
         
+        Title="BattleWindow" 
+        Height="650" Width="600"
+        ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:BattleWindowViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Right" Command="{Binding PlayerMoveRightCommand}"/>
+        <KeyBinding Key="Left" Command="{Binding PlayerMoveLeftCommand}"/>
+        <KeyBinding Key="Up" Command="{Binding PlayerMoveUpCommand}"/>
+        <KeyBinding Key="Down" Command="{Binding PlayerMoveDownCommand}"/>
+    </Window.InputBindings>
+
+    
+    <Grid >
+       
     </Grid>
 </Window>

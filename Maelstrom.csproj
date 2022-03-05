@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Resources\Maps\BattleMaps\" />
     <Folder Include="Infrastructure\Commands\UserControlsCommands\Base\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterClasses\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterProperties\" />
