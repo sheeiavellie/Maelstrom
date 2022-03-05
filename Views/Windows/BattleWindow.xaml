@@ -20,8 +20,41 @@
         <KeyBinding Key="Down" Command="{Binding PlayerMoveDownCommand}"/>
     </Window.InputBindings>
 
-    
-    <Grid >
-       
-    </Grid>
+
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1px" Margin="50px, 25px, 50px, 0px">
+            <Grid Height="500" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="test" Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}"/>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 25px, 50px, 25" >
+            <Grid>
+                <TextBlock Text="{Binding LogValue}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </DockPanel>
 </Window>
