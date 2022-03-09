@@ -18,6 +18,13 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
+        private int _Gold;
+        public int Gold
+        {
+            get => _Gold;
+            set => Set(ref _Gold, value);
+        }
+
         #region GameObjects
         private ObservableCollection<GameObject> _GameObjects;
         public ObservableCollection<GameObject> GameObjects
@@ -127,17 +134,18 @@ namespace Maelstrom.ViewModels
             world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PRow += 1;
         }
-        #endregion 
+        #endregion
 
         #endregion
 
-
+        #region Player Texture
         private string _PlayerTexture = "../../Data/Resources/Textures/char_test_tex.png";
         public string PlayerTexture
         {
             get => _PlayerTexture;
             set => Set(ref _PlayerTexture, value);
-        }
+        } 
+        #endregion
 
         public MainWindowViewModel()
         {
@@ -151,6 +159,8 @@ namespace Maelstrom.ViewModels
             GameObjects = map.ObjectsViewModel;
 
             GameObjects[0].Name = "test";
+
+            Gold = 0;
 
             PRow = GameObjects[0].Row;
             PColumn = GameObjects[0].Column;
