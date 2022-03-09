@@ -5,12 +5,14 @@ namespace Maelstrom.Models.Objects.Envirnoment
     internal class BattleMapCell
     {
         public bool IsFree { get; set; }
+
+        private GameObject _PlacedObject;
         public GameObject PlacedObject
         {
-            get => PlacedObject;
+            get => _PlacedObject;
             set
             {
-                PlacedObject = value;
+                _PlacedObject = value;
                 if(value != null)
                     IsFree = false;
             }

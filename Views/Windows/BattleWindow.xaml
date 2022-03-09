@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maelstrom"
         xmlns:vm="clr-namespace:Maelstrom.ViewModels"
+        xmlns:c="clr-namespace:Maelstrom.Infrastructure.Converters"
         mc:Ignorable="d"
         
         Title="BattleWindow" 
@@ -120,7 +121,18 @@
 
                 </Border>
 
-
+                <Image Grid.RowSpan="5" Grid.ColumnSpan="5" Stretch="UniformToFill">
+                    <Image.Source>
+                        <Binding Path="B64">
+                            <Binding.Converter>
+                                <c:Base64ToImage/>
+                            </Binding.Converter>
+                        </Binding>
+                    </Image.Source>
+                </Image>
+                <Image Grid.Row="{Binding GameObjects[0].Row}" 
+                       Grid.Column="{Binding GameObjects[0].Column}" 
+                       Source="{Binding RuinsTexture}"/>
             </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 25px, 50px, 25" >

@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Resources\Maps\BattleMaps\battlemap_test.json" />
     <None Remove="Data\Resources\Maps\map_test.json" />
     <None Remove="Data\Resources\Textures\char_test_tex.png" />
+    <None Remove="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Data\Resources\Maps\BattleMaps\battlemap_test.json" />
     <Resource Include="Data\Resources\Maps\map_test.json" />
     <Resource Include="Data\Resources\Textures\char_test_tex.png" />
+    <Resource Include="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
 </Project>

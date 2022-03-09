@@ -1,5 +1,8 @@
 ﻿using Maelstrom.Infrastructure.Commands;
+using Maelstrom.Models.Objects.Envirnoment;
+using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.ViewModels.Base;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Maelstrom.ViewModels
@@ -93,7 +96,12 @@ namespace Maelstrom.ViewModels
 
         #endregion
 
-
+        private string _B64;
+        public string B64
+        {
+            get => _B64;
+            set => Set(ref _B64, value);
+        }
 
         private string _LogValue;
         public string LogValue
@@ -102,11 +110,34 @@ namespace Maelstrom.ViewModels
             set => Set(ref _LogValue, value);
         }
 
+        private BattleMap map;
+        private BattleMapGrid battlemapgrid;
+
+        private ObservableCollection<GameObject> _GameObjects;
+        public ObservableCollection<GameObject> GameObjects
+        {
+            get => _GameObjects;
+            set => Set(ref _GameObjects, value);
+        }
+
+        private string _RuinsTexture = "../../Data/Resources/Textures/ruins.png";
+        public string RuinsTexture
+        {
+            get => _RuinsTexture;
+            set => Set(ref _RuinsTexture, value);
+        }
 
         public BattleWindowViewModel()
         {
             PColumn = 1;
             PRow = 1;
+
+            map = new BattleMap("../../../Data/Resources/Maps/BattleMaps/battlemap_test.json");
+            battlemapgrid = new BattleMapGrid(map);
+            GameObjects = map.ObjectsViewModel;
+
+            _B64 = map.Background;
+
 
             LogValue = "Initialized";
 

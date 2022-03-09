@@ -14,7 +14,7 @@
             {
                 for(int j = 0; j < Size; j++)
                 {
-                    Grid[i, j] = new BattleMapCell();
+                    Grid[i, j] = new BattleMapCell(map.Objects[i, j]);
                 }
             }
         }
