@@ -39,6 +39,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Image Grid.RowSpan="5" Grid.ColumnSpan="5" Stretch="UniformToFill" >
+                    <Image.Source>
+                        <Binding Path="B64">
+                            <Binding.Converter>
+                                <c:Base64ToImage/>
+                            </Binding.Converter>
+                        </Binding>
+                    </Image.Source>
+                </Image>
                 <TextBlock Text="test" Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}"/>
 
                 <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="0">
@@ -121,15 +130,7 @@
 
                 </Border>
 
-                <Image Grid.RowSpan="5" Grid.ColumnSpan="5" Stretch="UniformToFill">
-                    <Image.Source>
-                        <Binding Path="B64">
-                            <Binding.Converter>
-                                <c:Base64ToImage/>
-                            </Binding.Converter>
-                        </Binding>
-                    </Image.Source>
-                </Image>
+                
                 <Image Grid.Row="{Binding GameObjects[0].Row}" 
                        Grid.Column="{Binding GameObjects[0].Column}" 
                        Source="{Binding RuinsTexture}"/>

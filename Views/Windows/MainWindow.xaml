@@ -51,7 +51,7 @@
             </Button>
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
-            <Grid x:Name="ggg" ShowGridLines="true">
+            <Grid x:Name="ggg" ShowGridLines="False">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -89,7 +89,7 @@
                 <Grid  Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}">
                     <Image Source="{Binding PlayerTexture}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="White"
+                    <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="Transparent"
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
