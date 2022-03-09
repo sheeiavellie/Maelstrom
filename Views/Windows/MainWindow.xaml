@@ -92,7 +92,6 @@
                     <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="White"
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
-                
             </Grid>
         </Border>
     </DockPanel>

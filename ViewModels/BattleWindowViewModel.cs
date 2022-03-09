@@ -34,7 +34,7 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveRightCommand { get; }
         private bool CanPlayerMoveRightCommandExecute(object p)
         {
-            if (PColumn < 9)
+            if (PColumn < 4)
                 return true;
             return false;
         }
@@ -79,7 +79,7 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveDownCommand { get; }
         private bool CanPlayerMoveDownCommandExecute(object p)
         {
-            if (PRow < 9)
+            if (PRow < 4)
                 return true;
             return false;
         }

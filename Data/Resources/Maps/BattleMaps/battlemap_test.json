@@ -1,7 +1,13 @@
 {
   "name": "MAP_NAME",
-
-
-
+  "size": 5,
+  "objects_count": 1,
+  "objects": [
+    {
+      "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.WallObject.WallObject",
+      "row": 1,
+      "column": 1
+    }
+  ],
   "background": "PLACEHOLDER"
 }

@@ -22,14 +22,9 @@
 
 
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1px" Margin="50px, 25px, 50px, 0px">
-            <Grid Height="500" ShowGridLines="True">
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0.4" Margin="50px, 25px, 50px, 0px">
+            <Grid Height="500" ShowGridLines="False">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -42,13 +37,90 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="test" Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}"/>
+
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="0">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="1" Grid.Column="0">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.Column="0">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="3" Grid.Column="0">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="4" Grid.Column="0">
+
+                </Border>
+
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="1">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="1" Grid.Column="1">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.Column="1">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="3" Grid.Column="1">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="4" Grid.Column="1">
+
+                </Border>
+
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="2">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="1" Grid.Column="2">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.Column="2">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="3" Grid.Column="2">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="4" Grid.Column="2">
+
+                </Border>
+
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="3">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="1" Grid.Column="3">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.Column="3">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="3" Grid.Column="3">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="4" Grid.Column="3">
+
+                </Border>
+
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="4">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="1" Grid.Column="4">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.Column="4">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="3" Grid.Column="4">
+
+                </Border>
+                <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="4" Grid.Column="4">
+
+                </Border>
+
+
             </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 25px, 50px, 25" >
