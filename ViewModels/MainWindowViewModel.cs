@@ -131,6 +131,14 @@ namespace Maelstrom.ViewModels
 
         #endregion
 
+
+        private string _PlayerTexture = "../../Data/Resources/Textures/char_test_tex.png";
+        public string PlayerTexture
+        {
+            get => _PlayerTexture;
+            set => Set(ref _PlayerTexture, value);
+        }
+
         public MainWindowViewModel()
         {
             PlayerMoveRightCommand = new RelayCommand(OnPlayerMoveRightCommandExecuted, CanPlayerMoveRightCommandExecute);

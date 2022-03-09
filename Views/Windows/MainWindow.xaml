@@ -86,8 +86,13 @@
                     </Image.Source>
                 </Image>
 
-                <TextBlock Text="{Binding GameObjects[0].Name}" Grid.Row="{Binding PRow}" 
-                           Grid.Column="{Binding PColumn}"/>
+                <Grid  Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}">
+                    <Image Source="{Binding PlayerTexture}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                
             </Grid>
         </Border>
     </DockPanel>

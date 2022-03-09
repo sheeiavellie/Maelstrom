@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Data\Resources\Maps\map_test.json" />
+    <None Remove="Data\Resources\Textures\char_test_tex.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <Resource Include="Data\Resources\Maps\map_test.json" />
+    <Resource Include="Data\Resources\Textures\char_test_tex.png" />
   </ItemGroup>
 
 </Project>
