@@ -50,6 +50,7 @@
                 </Button.Resources>
             </Button>
         </Grid>
+       
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
             <Grid x:Name="ggg" ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -76,6 +77,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                
                 <Image Grid.RowSpan="10" Grid.ColumnSpan="10" Stretch="UniformToFill">
                     <Image.Source>
                         <Binding Path="B64">
@@ -85,13 +87,64 @@
                         </Binding>
                     </Image.Source>
                 </Image>
-
+                
                 <Grid  Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}">
                     <Image Source="{Binding PlayerTexture}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="Transparent"
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
+
+                <ItemsControl ItemsSource="{Binding GameObjects}" 
+                              Grid.RowSpan="10"
+                              Grid.ColumnSpan="10">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Style.Setters>
+                                <Setter Property="Grid.Row" Value="{Binding Row}" />
+                                <Setter Property="Grid.Column" Value="{Binding Column}" />
+                            </Style.Setters>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
+
+
+
             </Grid>
         </Border>
     </DockPanel>
