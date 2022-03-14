@@ -18,12 +18,14 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
+        #region Gold
         private int _Gold;
         public int Gold
         {
             get => _Gold;
             set => Set(ref _Gold, value);
-        }
+        } 
+        #endregion
 
         #region GameObjects
         private ObservableCollection<GameObject> _GameObjects;
@@ -136,6 +138,18 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
+        #region Use
+        public ICommand PlayerUseCommand { get; }
+        private bool CanPlayerUseCommandExecute(object p)
+        {
+            return true;
+        }
+        private void OnPlayerUseCommandExecuted(object p)
+        {
+
+        } 
+        #endregion
+
         #endregion
 
         #region Player Texture
@@ -144,21 +158,37 @@ namespace Maelstrom.ViewModels
         {
             get => _PlayerTexture;
             set => Set(ref _PlayerTexture, value);
-        } 
+        }
         #endregion
+
+        private string _GT = "../../Data/Resources/Textures/gold_heap.gif";
+        public string GoldTexture
+        {
+            get => _GT;
+            set => Set(ref _GT, value);
+        }
+
+
+
 
         public MainWindowViewModel()
         {
+            #region Commands Declaration
+
             PlayerMoveRightCommand = new RelayCommand(OnPlayerMoveRightCommandExecuted, CanPlayerMoveRightCommandExecute);
             PlayerMoveLeftCommand = new RelayCommand(OnPlayerMoveLeftCommandExecuted, CanPlayerMoveLeftCommandExecute);
             PlayerMoveUpCommand = new RelayCommand(OnPlayerMoveUpCommandExecuted, CanPlayerMoveUpCommandExecute);
             PlayerMoveDownCommand = new RelayCommand(OnPlayerMoveDownCommandExecuted, CanPlayerMoveDownCommandExecute);
+            PlayerUseCommand = new RelayCommand(OnPlayerUseCommandExecuted, CanPlayerUseCommandExecute); 
+
+            #endregion
 
             map = new Map("../../../Data/Resources/Maps/map_test.json");
             world = new World(map);
+
             GameObjects = map.ObjectsViewModel;
 
-            GameObjects[0].Name = "test";
+            
 
             Gold = 0;
 
@@ -166,6 +196,6 @@ namespace Maelstrom.ViewModels
             PColumn = GameObjects[0].Column;
 
             _B64 = map.BackgroundImage;
-        }
     }
+}
 }

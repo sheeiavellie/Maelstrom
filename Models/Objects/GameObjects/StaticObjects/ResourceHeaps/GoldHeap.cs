@@ -8,6 +8,10 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.ResourceHeaps
 {
     internal class GoldHeap : GameObject
     {
-        public int GoldAmount { get; set; }
+        private int _GoldAmount = 100;
+        public int GoldAmount
+        {
+            get => _GoldAmount;
+        }
     }
 }

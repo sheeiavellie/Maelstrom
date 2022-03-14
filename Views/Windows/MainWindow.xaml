@@ -17,6 +17,7 @@
         <KeyBinding Key="Left" Command="{Binding PlayerMoveLeftCommand}"/>
         <KeyBinding Key="Up" Command="{Binding PlayerMoveUpCommand}"/>
         <KeyBinding Key="Down" Command="{Binding PlayerMoveDownCommand}"/>
+        <KeyBinding Key="E" Command="{Binding PlayerUseCommand}"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -91,11 +92,10 @@
                 <Grid  Grid.Row="{Binding PRow}" Grid.Column="{Binding PColumn}">
                     <Image Source="{Binding PlayerTexture}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="{Binding GameObjects[0].Name}" Foreground="Transparent"
-                               VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
 
                 <ItemsControl ItemsSource="{Binding GameObjects}" 
+                              AlternationCount="{Binding GameObjects.Count}" 
                               Grid.RowSpan="10"
                               Grid.ColumnSpan="10">
                     <ItemsControl.ItemsPanel>
@@ -130,7 +130,14 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
+                            <Grid>
+                                <Grid.DataContext>
+                                    <vm:MainWindowViewModel/>
+                                </Grid.DataContext>
+                                <Image Source="{Binding GoldTexture}"/>
+                                <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
+                RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
