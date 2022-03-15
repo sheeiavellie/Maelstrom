@@ -2,6 +2,7 @@
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.ViewModels.Base;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -63,7 +64,21 @@ namespace Maelstrom.ViewModels
             get => _PColumn;
             set => Set(ref _PColumn, value);
         }
-        #endregion 
+        #endregion
+
+        private int _PlayerViewDirectionRow;
+        public int PlayerViewDirectionRow
+        {
+            get => _PlayerViewDirectionRow;
+            set => Set(ref _PlayerViewDirectionRow, value);
+        }
+
+        private int _PlayerViewDirectionColumn;
+        public int PlayerViewDirectionColumn
+        {
+            get => _PlayerViewDirectionColumn;
+            set => Set(ref _PlayerViewDirectionColumn, value);
+        }
 
         #endregion
 
@@ -78,6 +93,9 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveRightCommand { get; }
         private bool CanPlayerMoveRightCommandExecute(object p)
         {
+            PlayerViewDirectionColumn = PColumn + 1;
+            PlayerViewDirectionRow = PRow;
+
             if (PColumn < map.Size - 1 && world.WorldGrid[PRow, PColumn + 1].Weight != 0)
                 return true;
             return false;
@@ -87,6 +105,9 @@ namespace Maelstrom.ViewModels
             world.WorldGrid[PRow, PColumn + 1].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
             world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PColumn += 1;
+
+            PlayerViewDirectionColumn = PColumn + 1;
+            PlayerViewDirectionRow = PRow;
         }
         #endregion
 
@@ -94,6 +115,9 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveLeftCommand { get; }
         private bool CanPlayerMoveLeftCommandExecute(object p)
         {
+            PlayerViewDirectionColumn = PColumn - 1;
+            PlayerViewDirectionRow = PRow;
+
             if (PColumn > 0 && world.WorldGrid[PRow, PColumn - 1].Weight != 0)
                 return true;
             return false;
@@ -103,6 +127,9 @@ namespace Maelstrom.ViewModels
             world.WorldGrid[PRow, PColumn - 1].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
             world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PColumn -= 1;
+
+            PlayerViewDirectionColumn = PColumn - 1;
+            PlayerViewDirectionRow = PRow;
         }
         #endregion
 
@@ -110,6 +137,9 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveUpCommand { get; }
         private bool CanPlayerMoveUpCommandExecute(object p)
         {
+            PlayerViewDirectionRow = PRow - 1;
+            PlayerViewDirectionColumn = PColumn;
+
             if (PRow > 0 && world.WorldGrid[PRow - 1, PColumn].Weight != 0)
                 return true;
             return false;
@@ -119,6 +149,9 @@ namespace Maelstrom.ViewModels
             world.WorldGrid[PRow - 1, PColumn].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
             world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PRow -= 1;
+
+            PlayerViewDirectionRow = PRow - 1;
+            PlayerViewDirectionColumn = PColumn;
         }
         #endregion
 
@@ -126,6 +159,9 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerMoveDownCommand { get; }
         private bool CanPlayerMoveDownCommandExecute(object p)
         {
+            PlayerViewDirectionRow = PRow + 1;
+            PlayerViewDirectionColumn = PColumn;
+
             if (PRow < map.Size - 1 && world.WorldGrid[PRow + 1, PColumn].Weight != 0)
                 return true;
             return false;
@@ -135,6 +171,9 @@ namespace Maelstrom.ViewModels
             world.WorldGrid[PRow + 1, PColumn].PlacedObject = world.WorldGrid[PRow, PColumn].PlacedObject;
             world.WorldGrid[PRow, PColumn].PlacedObject = null;
             PRow += 1;
+
+            PlayerViewDirectionRow = PRow + 1;
+            PlayerViewDirectionColumn = PColumn;
         }
         #endregion
 
@@ -142,7 +181,7 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerUseCommand { get; }
         private bool CanPlayerUseCommandExecute(object p)
         {
-            return true;
+            return false;
         }
         private void OnPlayerUseCommandExecuted(object p)
         {
@@ -161,12 +200,9 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
-        private string _GT = "../../Data/Resources/Textures/gold_heap.gif";
-        public string GoldTexture
-        {
-            get => _GT;
-            set => Set(ref _GT, value);
-        }
+        
+
+
 
 
 
@@ -188,12 +224,13 @@ namespace Maelstrom.ViewModels
 
             GameObjects = map.ObjectsViewModel;
 
-            
-
             Gold = 0;
 
             PRow = GameObjects[0].Row;
             PColumn = GameObjects[0].Column;
+
+            PlayerViewDirectionRow = PRow;
+            PlayerViewDirectionColumn = PColumn + 1;
 
             _B64 = map.BackgroundImage;
     }

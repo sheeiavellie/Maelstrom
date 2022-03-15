@@ -16,7 +16,7 @@ namespace Maelstrom.Models.Objects.Envirnoment
                 if(value != null)
                 {
                     _CurrentlyOccupied = true;
-                    //_Weight = 0;
+                    _Weight = 0;
                 }
             }
         }

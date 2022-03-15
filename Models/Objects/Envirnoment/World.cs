@@ -1,4 +1,4 @@
-﻿using Maelstrom.Models.Objects.GameObjects;
+﻿using Maelstrom.Models.Objects.GameObjects.Character;
 
 namespace Maelstrom.Models.Objects.Envirnoment
 {
@@ -8,7 +8,6 @@ namespace Maelstrom.Models.Objects.Envirnoment
         public int Size { get; set; }
         public World(Map map)
         {
-
             Size = map.Size;
 
             WorldGrid = new Cell[Size, Size];

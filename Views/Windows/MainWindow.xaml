@@ -53,7 +53,7 @@
         </Grid>
        
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
-            <Grid x:Name="ggg" ShowGridLines="False">
+            <Grid x:Name="ggg" ShowGridLines="true">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -93,6 +93,12 @@
                     <Image Source="{Binding PlayerTexture}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
+                <Rectangle Grid.Row="{Binding PlayerViewDirectionRow}"
+                               Grid.Column="{Binding PlayerViewDirectionColumn}">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="SkyBlue" Opacity=".9" />
+                    </Rectangle.Fill>
+                </Rectangle>
 
                 <ItemsControl ItemsSource="{Binding GameObjects}" 
                               AlternationCount="{Binding GameObjects.Count}" 
@@ -134,7 +140,6 @@
                                 <Grid.DataContext>
                                     <vm:MainWindowViewModel/>
                                 </Grid.DataContext>
-                                <Image Source="{Binding GoldTexture}"/>
                                 <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
                 RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Grid>
