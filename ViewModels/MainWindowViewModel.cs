@@ -1,9 +1,11 @@
 ﻿using Maelstrom.Infrastructure.Commands;
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
+using Maelstrom.Models.Objects.GameObjects.Character;
 using Maelstrom.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Maelstrom.ViewModels
@@ -181,12 +183,33 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerUseCommand { get; }
         private bool CanPlayerUseCommandExecute(object p)
         {
+            foreach(GameObject obj in GameObjects)
+            {
+                if(obj is not Character)
+                {
+                    if(obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
         private void OnPlayerUseCommandExecuted(object p)
         {
+            foreach (GameObject obj in GameObjects.ToList())
+            {
+                if (obj is not Character)
+                {
+                    if (obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
+                    {
+                        Gold += 100;
 
-        } 
+                        GameObjects.Remove(obj);
+                    }
+                }
+            }
+        }
         #endregion
 
         #endregion
