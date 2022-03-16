@@ -20,6 +20,7 @@
     <Folder Include="Infrastructure\Commands\UserControlsCommands\Base\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterClasses\" />
     <Folder Include="Models\Objects\GameObjects\Character\CharacterProperties\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,21 @@
     <Resource Include="Data\Resources\Maps\map_test.json" />
     <Resource Include="Data\Resources\Textures\char_test_tex.png" />
     <Resource Include="Data\Resources\Textures\ruins.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Data\Resources\Constants\ConstantPath.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConstantPath.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Data\Resources\Constants\ConstantPath.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConstantPath.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

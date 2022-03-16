@@ -263,7 +263,7 @@ namespace Maelstrom.ViewModels
 
             B64 = map.BackgroundImage;
 
-            PlayerTexture = _TextureManager.LoadTexture("char_teswt_tex.png");
+            PlayerTexture = _TextureManager.LoadTexture("char_test_tex");
         }
     }
 }
