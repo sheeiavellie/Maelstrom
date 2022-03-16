@@ -70,7 +70,7 @@ namespace Maelstrom.Data.Resources.Constants {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to /Maelstrom;component/.
         /// </summary>
         internal static string URI {
             get {
