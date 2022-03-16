@@ -12,6 +12,7 @@
     <None Remove="Data\Resources\Maps\map_test.json" />
     <None Remove="Data\Resources\Maps\patrick.json" />
     <None Remove="Data\Resources\Textures\char_test_tex.png" />
+    <None Remove="Data\Resources\Textures\error.png" />
     <None Remove="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
@@ -28,6 +29,7 @@
   <ItemGroup>
     <Resource Include="Data\Resources\Maps\BattleMaps\battlemap_test.json" />
     <Resource Include="Data\Resources\Maps\patrick.json" />
+    <Resource Include="Data\Resources\Textures\error.png" />
     <Resource Include="Data\Resources\Textures\gold_heap.gif" />
     <Resource Include="Data\Resources\Maps\map_test.json" />
     <Resource Include="Data\Resources\Textures\char_test_tex.png" />

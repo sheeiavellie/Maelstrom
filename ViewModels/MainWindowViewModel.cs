@@ -2,8 +2,8 @@
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.Models.Objects.GameObjects.Character;
+using Maelstrom.Services.TextureLoaderManager;
 using Maelstrom.ViewModels.Base;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -68,6 +68,7 @@ namespace Maelstrom.ViewModels
         }
         #endregion
 
+        #region Player view direction
         private int _PlayerViewDirectionRow;
         public int PlayerViewDirectionRow
         {
@@ -80,13 +81,22 @@ namespace Maelstrom.ViewModels
         {
             get => _PlayerViewDirectionColumn;
             set => Set(ref _PlayerViewDirectionColumn, value);
-        }
+        } 
+        #endregion
 
         #endregion
 
         #region Envirnoment
+
         private Map map;
         private World world;
+
+        #endregion
+
+        #region Services
+
+        private ITextureLoaderManager _TextureManager;
+
         #endregion
 
         #region Player Controls
@@ -205,6 +215,7 @@ namespace Maelstrom.ViewModels
                     {
                         Gold += 100;
 
+                        world.WorldGrid[obj.Row, obj.Column].Weight = world.WorldGrid[obj.Row, obj.Column].BaseWeight;
                         GameObjects.Remove(obj);
                     }
                 }
@@ -215,20 +226,14 @@ namespace Maelstrom.ViewModels
         #endregion
 
         #region Player Texture
-        private string _PlayerTexture = "../../Data/Resources/Textures/char_test_tex.png";
+
+        private string _PlayerTexture;
         public string PlayerTexture
         {
             get => _PlayerTexture;
             set => Set(ref _PlayerTexture, value);
         }
         #endregion
-
-        
-
-
-
-
-
 
         public MainWindowViewModel()
         {
@@ -244,6 +249,7 @@ namespace Maelstrom.ViewModels
 
             map = new Map("../../../Data/Resources/Maps/map_test.json");
             world = new World(map);
+            _TextureManager = new TextureLoaderManager();
 
             GameObjects = map.ObjectsViewModel;
 
@@ -255,7 +261,9 @@ namespace Maelstrom.ViewModels
             PlayerViewDirectionRow = PRow;
             PlayerViewDirectionColumn = PColumn + 1;
 
-            _B64 = map.BackgroundImage;
+            B64 = map.BackgroundImage;
+
+            PlayerTexture = _TextureManager.LoadTexture("char_teswt_tex.png");
+        }
     }
-}
 }
