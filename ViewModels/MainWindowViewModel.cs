@@ -2,6 +2,7 @@
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.Models.Objects.GameObjects.Character;
+using Maelstrom.Models.Objects.GameObjects.StaticObjects;
 using Maelstrom.Services.TextureLoaderManager;
 using Maelstrom.ViewModels.Base;
 using System.Collections.ObjectModel;
@@ -207,18 +208,13 @@ namespace Maelstrom.ViewModels
         }
         private void OnPlayerUseCommandExecuted(object p)
         {
-            foreach (GameObject obj in GameObjects.ToList())
+            foreach (var obj in GameObjects.ToList().OfType<IUsable>())
             {
-                if (obj is not Character)
-                {
-                    if (obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
-                    {
-                        Gold += 100;
+                Gold = obj.Use(Gold);
 
-                        world.WorldGrid[obj.Row, obj.Column].Weight = world.WorldGrid[obj.Row, obj.Column].BaseWeight;
-                        GameObjects.Remove(obj);
-                    }
-                }
+                world.WorldGrid[obj.Row, obj.Column].Weight = world.WorldGrid[obj.Row, obj.Column].BaseWeight;
+
+                GameObjects.Remove((GameObject)obj);
             }
         }
         #endregion
@@ -263,7 +259,7 @@ namespace Maelstrom.ViewModels
 
             B64 = map.BackgroundImage;
 
-            PlayerTexture = _TextureManager.LoadTexture("char_tesst_tex.png");
+            PlayerTexture = _TextureManager.LoadTexture("char_test_tex.png");
         }
     }
 }

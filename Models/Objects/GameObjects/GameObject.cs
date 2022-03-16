@@ -1,4 +1,6 @@
-﻿namespace Maelstrom.Models.Objects.GameObjects
+﻿using Maelstrom.Models.Objects.GameObjects.StaticObjects;
+
+namespace Maelstrom.Models.Objects.GameObjects
 {
     internal abstract class GameObject
     {
