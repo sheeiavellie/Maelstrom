@@ -10,12 +10,11 @@
 
         public void Use()
         {
-
         }
 
         public int Use(int Counter)
         {
-            return GoldAmount + Counter;
+            return Counter + GoldAmount;
         }
     }
 }

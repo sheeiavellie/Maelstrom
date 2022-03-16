@@ -1,13 +1,7 @@
-﻿using System;
-using Maelstrom.Models.Objects.Envirnoment;
-
-namespace Maelstrom.Models.Objects.GameObjects.Character
+﻿namespace Maelstrom.Models.Objects.GameObjects.Character
 {
     internal class Character : GameObject, ICharacter
     {
-        public int ManaPoints { get; set; }
-        public int HitPoints { get; set; }
-        
         public Character()
         {
 

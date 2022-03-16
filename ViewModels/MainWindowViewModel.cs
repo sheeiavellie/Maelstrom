@@ -221,6 +221,8 @@ namespace Maelstrom.ViewModels
 
         #endregion
 
+        #region Textures
+
         #region Player Texture
 
         private string _PlayerTexture;
@@ -229,6 +231,8 @@ namespace Maelstrom.ViewModels
             get => _PlayerTexture;
             set => Set(ref _PlayerTexture, value);
         }
+        #endregion 
+
         #endregion
 
         public MainWindowViewModel()
@@ -253,6 +257,8 @@ namespace Maelstrom.ViewModels
 
             PRow = GameObjects[0].Row;
             PColumn = GameObjects[0].Column;
+
+            GameObjects.Remove(GameObjects[0]); //kostyl
 
             PlayerViewDirectionRow = PRow;
             PlayerViewDirectionColumn = PColumn + 1;
