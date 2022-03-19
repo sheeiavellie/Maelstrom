@@ -1,6 +1,6 @@
 ﻿namespace Maelstrom.Models.Objects.GameObjects.Character
 {
-    internal class Character : GameObject, ICharacter
+    internal class Character : GameObject
     {
         public Character()
         {

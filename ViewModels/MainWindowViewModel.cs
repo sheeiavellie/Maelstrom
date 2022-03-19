@@ -2,8 +2,6 @@
 using Maelstrom.Models.Indicators;
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
-using Maelstrom.Models.Objects.GameObjects.BattleMap;
-using Maelstrom.Models.Objects.GameObjects.Character;
 using Maelstrom.Models.Objects.GameObjects.StaticObjects;
 using Maelstrom.Services.TextureLoaderManager;
 using Maelstrom.ViewModels.Base;
@@ -196,7 +194,7 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerUseCommand { get; }
         private bool CanPlayerUseCommandExecute(object p)
         {
-            foreach(GameObject obj in GameObjects)
+            foreach(var obj in GameObjects)
             {
                 if(obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
                 {
@@ -222,6 +220,13 @@ namespace Maelstrom.ViewModels
 
         #region Textures
 
+        private ObservableCollection<string> _Textures;
+        public ObservableCollection<string> Textures
+        {
+            get => _Textures;
+            set => Set(ref _Textures, value);
+        }
+
         #region Player Texture
 
         private string _PlayerTexture;
@@ -231,6 +236,8 @@ namespace Maelstrom.ViewModels
             set => Set(ref _PlayerTexture, value);
         }
         #endregion 
+
+       
 
         #endregion
 
@@ -279,6 +286,12 @@ namespace Maelstrom.ViewModels
             PlayerViewDirectionColumn = PColumn + 1;
 
             B64 = map.BackgroundImage;
+
+            Textures = new ObservableCollection<string>();
+            foreach(var obj in GameObjects)
+            {
+                Textures.Add(_TextureManager.LoadTexture(obj.GetType().Name + ".png"));
+            }
 
             PlayerTexture = _TextureManager.LoadTexture("char_test_tex.png");
         }

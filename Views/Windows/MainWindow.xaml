@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:Maelstrom"
         mc:Ignorable="d"
         
-        Title="{Binding Title}" 
+        Title="{Binding Title}"  
         Height="650" Width="600"
         ResizeMode="NoResize"
         >
@@ -22,6 +22,11 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <c:ObservableCollectionItemByAlternationIndex x:Key="ObservableCollectionItemByAlternationIndex" />
+        </ResourceDictionary>
+    </Window.Resources>
 
     <DockPanel>
         <Grid DockPanel.Dock="Top" ShowGridLines="false" Height="100px" Margin="50, 0, 50, 0">
@@ -166,8 +171,17 @@
                                 <Grid.DataContext>
                                     <vm:MainWindowViewModel/>
                                 </Grid.DataContext>
-                                <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
+                                <TextBlock x:Name="o" Text="{Binding Path=(ItemsControl.AlternationIndex), 
                 RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Image>
+                                    <Image.Source>
+                                        <MultiBinding Converter="{StaticResource ObservableCollectionItemByAlternationIndex}">
+                                            <Binding Path="Textures"/>
+                                            <Binding Path="(ItemsControl.AlternationIndex)"
+                                                     RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        </MultiBinding>
+                                    </Image.Source>
+                                </Image>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

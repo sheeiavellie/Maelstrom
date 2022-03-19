@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
 namespace Maelstrom.Infrastructure.Converters
 {
     internal class Base64ToImage : Converter
     {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object Convert(object v, Type t, object p, CultureInfo c)
         {
-            string s = value as string;
+            string s = v as string;
 
             if (s == null)
                 return null;
