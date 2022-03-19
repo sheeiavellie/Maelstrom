@@ -43,15 +43,39 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Text="todo Mana: 500" TextAlignment="Center"/>
 
             <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1px">
-                <Grid ShowGridLines="True">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
+                <ItemsControl ItemsSource="{Binding UnitsUnderPlayerControl}" 
+                              AlternationCount="{Binding UnitsUnderPlayerControl.Count}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid ShowGridLines="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.DataContext>
+                                    <vm:MainWindowViewModel/>
+                                </Grid.DataContext>
+                                <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
+                RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Style.Setters>
+                                <Setter Property="Grid.Column" Value="{Binding Position}" />
+                            </Style.Setters>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
             </Border>
-            
         </Grid>
        
         <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">

@@ -1,6 +1,8 @@
 ﻿using Maelstrom.Infrastructure.Commands;
+using Maelstrom.Models.Indicators;
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
+using Maelstrom.Models.Objects.GameObjects.BattleMap;
 using Maelstrom.Models.Objects.GameObjects.Character;
 using Maelstrom.Models.Objects.GameObjects.StaticObjects;
 using Maelstrom.Services.TextureLoaderManager;
@@ -196,12 +198,9 @@ namespace Maelstrom.ViewModels
         {
             foreach(GameObject obj in GameObjects)
             {
-                if(obj is not Character)
+                if(obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
                 {
-                    if(obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
@@ -234,6 +233,22 @@ namespace Maelstrom.ViewModels
         #endregion 
 
         #endregion
+
+
+        private ObservableCollection<UnitUnderPlayerControl> _UnitsUnderPlayerControl;
+        public ObservableCollection<UnitUnderPlayerControl> UnitsUnderPlayerControl
+        {
+            get => _UnitsUnderPlayerControl;
+            set => Set(ref _UnitsUnderPlayerControl, value);
+        }
+
+
+
+
+
+
+
+
 
         public MainWindowViewModel()
         {
