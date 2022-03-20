@@ -13,7 +13,7 @@
     [ 0, 0, 0, -1, -1, -1, 0, 0, 0, -1 ],
     [ 0, 0, 0, -1, -1, 0, 0, 0, 0, 0 ]
   ],
-  "objects_count": 3,
+  "objects_count": 4,
   "objects": [
     {
       "type": "Maelstrom.Models.Objects.GameObjects.Character.Character",
@@ -24,6 +24,11 @@
       "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksBuildings.Castle",
       "row": 0,
       "column": 3
+    },
+    {
+      "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksBuildings.Castle",
+      "row": 0,
+      "column": 4
     },
     {
       "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.ResourceHeaps.GoldHeap",

@@ -288,9 +288,12 @@ namespace Maelstrom.ViewModels
             B64 = map.BackgroundImage;
 
             Textures = new ObservableCollection<string>();
+
+            Textures.Add(_TextureManager.LoadTexture("erro.png"));
             foreach(var obj in GameObjects)
             {
-                Textures.Add(_TextureManager.LoadTexture(obj.GetType().Name + ".png"));
+                if(!Textures.Contains(_TextureManager.LoadTexture(obj.GetType().Name + ".png")))
+                    Textures.Add(_TextureManager.LoadTexture(obj.GetType().Name + ".png"));
             }
 
             PlayerTexture = _TextureManager.LoadTexture("char_test_tex.png");

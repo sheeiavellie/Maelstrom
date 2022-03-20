@@ -175,8 +175,10 @@
                 RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <Image>
                                     <Image.Source>
-                                        <MultiBinding Converter="{StaticResource ObservableCollectionItemByAlternationIndex}">
+                                        <MultiBinding Converter="{StaticResource 
+                                            ObservableCollectionItemByAlternationIndex}">
                                             <Binding Path="Textures"/>
+                                            <Binding Path="GameObjects"/>
                                             <Binding Path="(ItemsControl.AlternationIndex)"
                                                      RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
