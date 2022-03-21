@@ -44,8 +44,12 @@
 
             <TextBlock Grid.Row="0" Grid.Column="1" TextAlignment="Center" Text="{Binding Title}"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Gold, StringFormat='Gold: {0}'}" TextAlignment="Center"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="todo Mana: 500" TextAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Gold, StringFormat='Gold: {0}'}" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Mana, StringFormat='Mana: {0}'}" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
 
             <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1px">
                 <ItemsControl ItemsSource="{Binding UnitsUnderPlayerControl}" 

@@ -15,6 +15,7 @@
     <None Remove="Data\Resources\Textures\char_test_tex.png" />
     <None Remove="Data\Resources\Textures\error.png" />
     <None Remove="Data\Resources\Textures\goldheap.png" />
+    <None Remove="Data\Resources\Textures\manaHeap.png" />
     <None Remove="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
@@ -37,6 +38,7 @@
     <Resource Include="Data\Resources\Maps\map_test.json" />
     <Resource Include="Data\Resources\Textures\char_test_tex.png" />
     <Resource Include="Data\Resources\Textures\goldheap.png" />
+    <Resource Include="Data\Resources\Textures\manaHeap.png" />
     <Resource Include="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 

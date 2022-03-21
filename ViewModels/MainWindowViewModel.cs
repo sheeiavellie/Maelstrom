@@ -28,6 +28,15 @@ namespace Maelstrom.ViewModels
         {
             get => _Gold;
             set => Set(ref _Gold, value);
+        }
+        #endregion
+
+        #region Mana
+        private int _Mana;
+        public int Mana
+        {
+            get => _Mana;
+            set => Set(ref _Mana, value);
         } 
         #endregion
 
@@ -194,7 +203,7 @@ namespace Maelstrom.ViewModels
         public ICommand PlayerUseCommand { get; }
         private bool CanPlayerUseCommandExecute(object p)
         {
-            foreach(var obj in GameObjects)
+            foreach(var obj in GameObjects.ToList().OfType<IUsable>())
             {
                 if(obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
                 {
@@ -216,7 +225,7 @@ namespace Maelstrom.ViewModels
                         var removableObj = obj as IRemoveable;
                         removableObj.Remove(GameObjects, world);
                     }
-                }               
+                }
             }
         }
         #endregion
@@ -281,6 +290,7 @@ namespace Maelstrom.ViewModels
             GameObjects = map.ObjectsViewModel;
 
             Gold = 0;
+            Mana = 0;
 
             PRow = GameObjects[0].Row;
             PColumn = GameObjects[0].Column;

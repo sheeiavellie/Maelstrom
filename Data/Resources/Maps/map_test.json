@@ -13,7 +13,7 @@
     [ 0, 0, 0, -1, -1, -1, 0, 0, 0, -1 ],
     [ 0, 0, 0, -1, -1, 0, 0, 0, 0, 0 ]
   ],
-  "objects_count": 4,
+  "objects_count": 5,
   "objects": [
     {
       "type": "Maelstrom.Models.Objects.GameObjects.Character.Character",
@@ -33,6 +33,11 @@
     {
       "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.ResourceHeaps.GoldHeap",
       "row": 4,
+      "column": 8
+    },
+    {
+      "type": "Maelstrom.Models.Objects.GameObjects.StaticObjects.ResourceHeaps.ManaHeap",
+      "row": 6,
       "column": 8
     }
   ],
