@@ -10,7 +10,6 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects
     {
         int Row { get; set; }
         int Column { get; set; }
-        void Use();
-        int Use(int Counter);
+        void Use(dynamic p);
     }
 }

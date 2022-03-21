@@ -207,11 +207,16 @@ namespace Maelstrom.ViewModels
         {
             foreach (var obj in GameObjects.ToList().OfType<IUsable>())
             {
-                Gold = obj.Use(Gold);
+                if (obj.Row == PlayerViewDirectionRow && obj.Column == PlayerViewDirectionColumn)
+                {
+                    obj.Use(this);
 
-                world.WorldGrid[obj.Row, obj.Column].Weight = world.WorldGrid[obj.Row, obj.Column].BaseWeight;
-
-                GameObjects.Remove((GameObject)obj);
+                    if(obj is IRemoveable)
+                    {
+                        var removableObj = obj as IRemoveable;
+                        removableObj.Remove(GameObjects, world);
+                    }
+                }               
             }
         }
         #endregion

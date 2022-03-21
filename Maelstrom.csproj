@@ -14,7 +14,7 @@
     <None Remove="Data\Resources\Textures\Castle.png" />
     <None Remove="Data\Resources\Textures\char_test_tex.png" />
     <None Remove="Data\Resources\Textures\error.png" />
-    <None Remove="Data\Resources\Textures\goldheap1.png" />
+    <None Remove="Data\Resources\Textures\goldheap.png" />
     <None Remove="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
@@ -36,7 +36,7 @@
     <Resource Include="Data\Resources\Textures\error.png" />
     <Resource Include="Data\Resources\Maps\map_test.json" />
     <Resource Include="Data\Resources\Textures\char_test_tex.png" />
-    <Resource Include="Data\Resources\Textures\goldheap1.png" />
+    <Resource Include="Data\Resources\Textures\goldheap.png" />
     <Resource Include="Data\Resources\Textures\ruins.png" />
   </ItemGroup>
 
