@@ -220,7 +220,7 @@ namespace Maelstrom.ViewModels
                 {
                     obj.Use(this);
 
-                    if(obj is IRemoveable)
+                    if (obj is IRemoveable)
                     {
                         var removableObj = obj as IRemoveable;
                         removableObj.Remove(GameObjects, world);
@@ -263,14 +263,6 @@ namespace Maelstrom.ViewModels
             set => Set(ref _UnitsUnderPlayerControl, value);
         }
 
-
-
-
-
-
-
-
-
         public MainWindowViewModel()
         {
             #region Commands Declaration
@@ -296,6 +288,7 @@ namespace Maelstrom.ViewModels
             PColumn = GameObjects[0].Column;
 
             GameObjects.Remove(GameObjects[0]); //kostyl
+            
 
             PlayerViewDirectionRow = PRow;
             PlayerViewDirectionColumn = PColumn + 1;
@@ -304,10 +297,10 @@ namespace Maelstrom.ViewModels
 
             Textures = new ObservableCollection<string>();
 
-            Textures.Add(_TextureManager.LoadTexture("erro.png"));
-            foreach(var obj in GameObjects)
+            Textures.Add(_TextureManager.LoadTexture("error.png"));
+            foreach (var obj in GameObjects)
             {
-                if(!Textures.Contains(_TextureManager.LoadTexture(obj.GetType().Name + ".png")))
+                if (!Textures.Contains(_TextureManager.LoadTexture(obj.GetType().Name + ".png")))
                     Textures.Add(_TextureManager.LoadTexture(obj.GetType().Name + ".png"));
             }
 

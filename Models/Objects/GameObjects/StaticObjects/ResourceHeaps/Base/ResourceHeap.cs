@@ -14,8 +14,8 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.ResourceHeaps.Base
         }
         public void Remove(ObservableCollection<GameObject> c, World w)
         {
-            c.Remove(this);
             w.WorldGrid[this.Row, this.Column].Weight = w.WorldGrid[this.Row, this.Column].BaseWeight;
+            c.Remove(this);
         }
 
         public void Use(dynamic p)

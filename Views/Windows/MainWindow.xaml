@@ -172,17 +172,15 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Grid.DataContext>
-                                    <vm:MainWindowViewModel/>
-                                </Grid.DataContext>
-                                <TextBlock x:Name="o" Text="{Binding Path=(ItemsControl.AlternationIndex), 
-                RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
+                                                RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <Image>
-                                    <Image.Source>
-                                        <MultiBinding Converter="{StaticResource 
-                                            ObservableCollectionItemByAlternationIndex}">
-                                            <Binding Path="Textures"/>
-                                            <Binding Path="GameObjects"/>
+                                    <Image.Source>  
+                                        <MultiBinding Converter="{StaticResource ObservableCollectionItemByAlternationIndex}">
+                                            <Binding Path="DataContext.Textures"
+                                                     RelativeSource="{RelativeSource AncestorType=ItemsControl}"/>
+                                            <Binding Path="ItemsSource"
+                                                     RelativeSource="{RelativeSource AncestorType=ItemsControl}"/>
                                             <Binding Path="(ItemsControl.AlternationIndex)"
                                                      RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
