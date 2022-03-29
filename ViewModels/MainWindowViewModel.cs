@@ -3,6 +3,7 @@ using Maelstrom.Models.Indicators;
 using Maelstrom.Models.Objects.Envirnoment;
 using Maelstrom.Models.Objects.GameObjects;
 using Maelstrom.Models.Objects.GameObjects.StaticObjects;
+using Maelstrom.Services.DialogService;
 using Maelstrom.Services.TextureLoaderManager;
 using Maelstrom.ViewModels.Base;
 using System.Collections.ObjectModel;
@@ -263,6 +264,11 @@ namespace Maelstrom.ViewModels
             set => Set(ref _UnitsUnderPlayerControl, value);
         }
 
+
+
+
+        public IDialogService _dialogService;
+
         public MainWindowViewModel()
         {
             #region Commands Declaration
@@ -278,17 +284,15 @@ namespace Maelstrom.ViewModels
             map = new Map("../../../Data/Resources/Maps/map_test.json");
             world = new World(map);
             _TextureManager = new TextureLoaderManager();
+            _dialogService = new DialogService();
 
-            GameObjects = map.ObjectsViewModel;
+            GameObjects = new ObservableCollection<GameObject>(map.ObjectsViewModel.ToList().Where(i => i.GetType().Name != "Character"));
 
             Gold = 0;
             Mana = 0;
 
-            PRow = GameObjects[0].Row;
-            PColumn = GameObjects[0].Column;
-
-            GameObjects.Remove(GameObjects[0]); //kostyl
-            
+            PRow = map.ObjectsViewModel[0].Row;
+            PColumn = map.ObjectsViewModel[0].Column;
 
             PlayerViewDirectionRow = PRow;
             PlayerViewDirectionColumn = PColumn + 1;

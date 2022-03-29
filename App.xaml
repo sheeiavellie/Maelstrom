@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Maelstrom"
+             xmlns:unirec="clr-namespace:Maelstrom.Services.DialogUnitsRecruiting"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type unirec:UnitsRecruitingViewModel}">
+            <unirec:UserRecruitingView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
