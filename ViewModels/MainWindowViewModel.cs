@@ -106,7 +106,8 @@ namespace Maelstrom.ViewModels
 
         #region Services
 
-        private ITextureLoaderManager _TextureManager;
+        private ITextureLoaderManager _textureManager;
+        public IDialogService _dialogService;
 
         #endregion
 
@@ -267,7 +268,7 @@ namespace Maelstrom.ViewModels
 
 
 
-        public IDialogService _dialogService;
+        
 
         public MainWindowViewModel()
         {
@@ -283,7 +284,8 @@ namespace Maelstrom.ViewModels
 
             map = new Map("../../../Data/Resources/Maps/map_test.json");
             world = new World(map);
-            _TextureManager = new TextureLoaderManager();
+
+            _textureManager = new TextureLoaderManager();
             _dialogService = new DialogService();
 
             GameObjects = new ObservableCollection<GameObject>(map.ObjectsViewModel.ToList().Where(i => i.GetType().Name != "Character"));
@@ -301,14 +303,14 @@ namespace Maelstrom.ViewModels
 
             Textures = new ObservableCollection<string>();
 
-            Textures.Add(_TextureManager.LoadTexture("error.png"));
+            Textures.Add(_textureManager.LoadTexture("error.png"));
             foreach (var obj in GameObjects)
             {
-                if (!Textures.Contains(_TextureManager.LoadTexture(obj.GetType().Name + ".png")))
-                    Textures.Add(_TextureManager.LoadTexture(obj.GetType().Name + ".png"));
+                if (!Textures.Contains(_textureManager.LoadTexture(obj.GetType().Name + ".png")))
+                    Textures.Add(_textureManager.LoadTexture(obj.GetType().Name + ".png"));
             }
 
-            PlayerTexture = _TextureManager.LoadTexture("char_test_tex.png");
+            PlayerTexture = _textureManager.LoadTexture("char_test_tex.png");
         }
     }
 }

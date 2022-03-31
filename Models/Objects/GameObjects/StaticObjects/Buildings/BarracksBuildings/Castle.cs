@@ -7,8 +7,7 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksB
     {
         public void Use(dynamic p)
         {
-            var dialog = new UnitsRecruitingViewModel("Unirec");
-            p._dialogService.OpenDialog(dialog);
+            p._dialogService.OpenDialog(new UnitsRecruitingViewModel("Unirec"));
         }
     }
 }

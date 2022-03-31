@@ -27,11 +27,11 @@
             <c:ObservableCollectionItemByAlternationIndex x:Key="ObservableCollectionItemByAlternationIndex" />
         </ResourceDictionary>
     </Window.Resources>
+    
 
-    <DockPanel>
-        <Grid DockPanel.Dock="Top" ShowGridLines="false" Height="100px" Margin="50, 0, 50, 0">
+    <DockPanel Margin="50px, 0, 50px, 50px">
+        <Grid DockPanel.Dock="Top" Height="100">
             <Grid.RowDefinitions>
-                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -50,45 +50,10 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Mana, StringFormat='Mana: {0}'}" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"/>
-
-            <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1px">
-                <ItemsControl ItemsSource="{Binding UnitsUnderPlayerControl}" 
-                              AlternationCount="{Binding UnitsUnderPlayerControl.Count}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid ShowGridLines="True">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                            </Grid>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.DataContext>
-                                    <vm:MainWindowViewModel/>
-                                </Grid.DataContext>
-                                <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
-                RelativeSource={RelativeSource TemplatedParent}}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Style.Setters>
-                                <Setter Property="Grid.Column" Value="{Binding Position}" />
-                            </Style.Setters>
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </ItemsControl>
-            </Border>
         </Grid>
-       
-        <Border BorderBrush="Black" BorderThickness="1px" Margin="50px, 0px, 50px, 50px">
-            <Grid x:Name="ggg" ShowGridLines="true">
+
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1px">
+            <Grid ShowGridLines="true">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -175,7 +140,7 @@
                                 <TextBlock Text="{Binding Path=(ItemsControl.AlternationIndex), 
                                                 RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <Image>
-                                    <Image.Source>  
+                                    <Image.Source>
                                         <MultiBinding Converter="{StaticResource ObservableCollectionItemByAlternationIndex}">
                                             <Binding Path="DataContext.Textures"
                                                      RelativeSource="{RelativeSource AncestorType=ItemsControl}"/>
@@ -198,9 +163,6 @@
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
-
-
-
             </Grid>
         </Border>
     </DockPanel>

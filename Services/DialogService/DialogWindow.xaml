@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Maelstrom.Services.DialogService"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="{Binding Title}" Height="300" Width="300">
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="{Binding Title}" Height="600" Width="600">
     <ContentControl x:Name="ContentPresenter" Content="{Binding}"/>
 </Window>

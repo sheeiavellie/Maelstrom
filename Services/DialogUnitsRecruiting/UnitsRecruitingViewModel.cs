@@ -6,9 +6,9 @@ namespace Maelstrom.Services.DialogUnitsRecruiting
     {
 
 
+
         public UnitsRecruitingViewModel(string t) : base(t)
         {
-
         }
     }
 }
