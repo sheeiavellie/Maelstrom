@@ -18,9 +18,9 @@ namespace Maelstrom.Services.DialogUnitsRecruiting
     /// <summary>
     /// Interaction logic for UserRecruitingView.xaml
     /// </summary>
-    public partial class UserRecruitingView : UserControl
+    public partial class UnitsRecruitingView : UserControl
     {
-        public UserRecruitingView()
+        public UnitsRecruitingView()
         {
             InitializeComponent();
         }

@@ -11,6 +11,10 @@
     <None Remove="Data\Resources\Maps\gold_heap.gif" />
     <None Remove="Data\Resources\Maps\map_test.json" />
     <None Remove="Data\Resources\Maps\patrick.json" />
+    <None Remove="Data\Resources\Textures\ArmyCards\warriors_knight_card.png" />
+    <None Remove="Data\Resources\Textures\ArmyCards\warriors_shieldman_card.png" />
+    <None Remove="Data\Resources\Textures\ArmyCards\warriors_soldier_card.png" />
+    <None Remove="Data\Resources\Textures\ArmyCards\warriors_spearman_card.png" />
     <None Remove="Data\Resources\Textures\Castle.png" />
     <None Remove="Data\Resources\Textures\char_test_tex.png" />
     <None Remove="Data\Resources\Textures\error.png" />
@@ -31,6 +35,10 @@
   <ItemGroup>
     <Resource Include="Data\Resources\Maps\BattleMaps\battlemap_test.json" />
     <Resource Include="Data\Resources\Maps\patrick.json" />
+    <Resource Include="Data\Resources\Textures\ArmyCards\warriors_knight_card.png" />
+    <Resource Include="Data\Resources\Textures\ArmyCards\warriors_shieldman_card.png" />
+    <Resource Include="Data\Resources\Textures\ArmyCards\warriors_soldier_card.png" />
+    <Resource Include="Data\Resources\Textures\ArmyCards\warriors_spearman_card.png" />
     <Resource Include="Data\Resources\Textures\Castle.png" />
     <Resource Include="Data\Resources\Textures\error.png" />
     <Resource Include="Data\Resources\Maps\map_test.json" />

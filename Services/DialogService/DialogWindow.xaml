@@ -9,5 +9,6 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Title="{Binding Title}" Height="600" Width="600">
+
     <ContentControl x:Name="ContentPresenter" Content="{Binding}"/>
 </Window>

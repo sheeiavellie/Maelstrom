@@ -6,7 +6,7 @@
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type unirec:UnitsRecruitingViewModel}">
-            <unirec:UserRecruitingView/>
+            <unirec:UnitsRecruitingView/>
         </DataTemplate>
     </Application.Resources>
 </Application>
