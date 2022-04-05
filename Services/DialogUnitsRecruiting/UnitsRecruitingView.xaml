@@ -4,9 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Maelstrom.Services.DialogUnitsRecruiting"
+             xmlns:c="clr-namespace:Maelstrom.Infrastructure.Converters"
              mc:Ignorable="d" 
-             Height="600" Width="600"
-             DataContext="{Binding Path=(local:UnitsRecruitingViewModel.)}">
+             Height="600" Width="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <c:ObservableCollectionStringToBitmapImage x:Key="ObservableCollectionStringToBitmapImage"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -39,7 +44,8 @@
 
             <ScrollViewer HorizontalScrollBarVisibility="Visible" 
                           VerticalScrollBarVisibility="Disabled">
-                <ItemsControl ItemsSource="{Binding CardSource}">
+                <ItemsControl ItemsSource="{Binding CardSource}"
+                              AlternationCount="{Binding CardSource.Count}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -53,7 +59,20 @@
                             Width="200" Height="300" Margin="50, 0, 50, 0">
                                 <Grid>
                                     <StackPanel Orientation="Vertical">
-                                        <Image Source="{}" Height="250"/>
+
+                                        <Image Height="250" Stretch="UniformToFill">
+                                            <Image.Source>
+                                                <MultiBinding Converter="{StaticResource ObservableCollectionStringToBitmapImage}">
+                                                    
+                                                    <Binding Path="ItemsSource"
+                                                             RelativeSource="{RelativeSource AncestorType=ItemsControl}"/>
+                                                    <Binding Path="(ItemsControl.AlternationIndex)" 
+                                                             RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                    
+                                                </MultiBinding>
+                                            </Image.Source>
+                                        </Image>
+                                        
                                         <TextBlock Text="Card" Height="50"
                                                    HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"/>

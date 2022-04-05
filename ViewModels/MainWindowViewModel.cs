@@ -106,7 +106,7 @@ namespace Maelstrom.ViewModels
 
         #region Services
 
-        private ITextureLoaderManager _textureManager;
+        public ITextureLoaderManager _textureManager;
         public IDialogService _dialogService;
 
         #endregion

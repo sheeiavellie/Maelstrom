@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Maelstrom.Services.DialogUnitsRecruiting
 {
-    internal class UnitsRecruitingViewModel : DialogViewModel<string>
+    internal class UnitsRecruitingViewModel : DialogViewModel
     {
         private ObservableCollection<string> _CardSource;
         public ObservableCollection<string> CardSource
@@ -11,7 +11,6 @@ namespace Maelstrom.Services.DialogUnitsRecruiting
             get => _CardSource;
             set => Set(ref _CardSource, value);
         }
-
 
         public UnitsRecruitingViewModel(string t, ObservableCollection<string> cs) : base(t)
         {

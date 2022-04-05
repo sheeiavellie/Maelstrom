@@ -2,6 +2,6 @@
 {
     internal interface IDialogService
     {
-        T OpenDialog<T>(DialogViewModel<T> vm);
+        void OpenDialog(DialogViewModel vm);
     }
 }

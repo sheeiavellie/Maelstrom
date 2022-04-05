@@ -10,7 +10,7 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksB
     {
         public void Use(dynamic p)
         {
-            p._dialogService.OpenDialog(new UnitsRecruitingViewModel("Unirec", p._textureManager.LoadAllTexturesWithPrefix("/ArmyCards/", "warriors")));
+            p._dialogService.OpenDialog(new UnitsRecruitingViewModel("Unirec", p._textureManager.LoadAllTexturesWithPrefix("ArmyCards/", "warriors")));
         }
     }
 }

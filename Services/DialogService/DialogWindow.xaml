@@ -4,11 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maelstrom.Services.DialogService"
+        xmlns:prop="clr-namespace:Maelstrom.Infrastructure.Properties"
+        
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="{Binding Title}" Height="600" Width="600">
+        Title="{Binding Title}" Height="600" Width="600"
+        prop:WindowCloser.EnableWindowClosing="True">
+    
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding WindowClose}"/>
+    </Window.InputBindings>
 
     <ContentControl x:Name="ContentPresenter" Content="{Binding}"/>
 </Window>
