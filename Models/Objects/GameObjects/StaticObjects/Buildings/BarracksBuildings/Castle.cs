@@ -1,8 +1,5 @@
-﻿using Maelstrom.Data.Resources.Constants;
-using Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksBuildings.Base;
+﻿using Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksBuildings.Base;
 using Maelstrom.Services.DialogUnitsRecruiting;
-using System.Collections.ObjectModel;
-using System.IO;
 
 namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksBuildings
 {
@@ -10,7 +7,7 @@ namespace Maelstrom.Models.Objects.GameObjects.StaticObjects.Buildings.BarracksB
     {
         public void Use(dynamic p)
         {
-            p._dialogService.OpenDialog(new UnitsRecruitingViewModel("Unirec", p._textureManager.LoadAllTexturesWithPrefix("ArmyCards/", "warriors")));
+            p._dialogService.OpenDialog(new UnitsRecruitingViewModel("Unirec", 50, 0, p._textureManager.LoadAllTexturesWithPrefix("ArmyCards/", "warriors")));
         }
     }
 }

@@ -12,9 +12,32 @@ namespace Maelstrom.Services.DialogUnitsRecruiting
             set => Set(ref _CardSource, value);
         }
 
-        public UnitsRecruitingViewModel(string t, ObservableCollection<string> cs) : base(t)
+        private int _Gold;
+        public int Gold
+        {
+            get => _Gold;
+            set => Set(ref _Gold, value);
+        }
+
+        private int _GoldCost;
+        public int GoldCost
+        {
+            get => _GoldCost;
+            set => Set(ref _GoldCost, value);
+        }
+        private int _ManaCost;
+        public int ManaCost
+        {
+            get => _ManaCost;
+            set => Set(ref _ManaCost, value);
+        }
+
+
+        public UnitsRecruitingViewModel(string t, int gc, int mc, ObservableCollection<string> cs) : base(t)
         {
             CardSource = cs;
+            GoldCost = gc;
+            ManaCost = mc;
         }
     }
 }
